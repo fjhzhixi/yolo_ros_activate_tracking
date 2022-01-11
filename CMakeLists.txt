@@ -16,6 +16,11 @@ add_message_files(
     BoundingBoxes.msg
 )
 
+add_service_files(
+  FILES
+    GetMoveGoal.srv
+)
+
 generate_messages(
   DEPENDENCIES
     geometry_msgs

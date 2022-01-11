@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 from __future__ import division
 
@@ -7,7 +7,6 @@ import numpy as np
 import scipy.io as sio
 import os, sys, cv2, time
 from skimage.transform import resize
-from torch.cuda import is_available
 
 # ROS imports
 import rospy
@@ -24,8 +23,6 @@ package_path = package.get_path('yolov3_pytorch_ros')
 
 # Deep learning imports
 import torch
-from torch.utils.data import DataLoader
-from torchvision import datasets
 from torch.autograd import Variable
 
 from models.models import Darknet
@@ -221,7 +218,7 @@ class DetectorManager():
 
             cv2.rectangle(imgOut, start_point, end_point, lineColor, thickness)
             text = ('{:s}: {:.3f}').format(label,confidence)
-            cv2.putText(imgOut, text, (int(x_p1), int(y_p1+20)), font, fontScale, (255,255,255), thickness ,cv2.LINE_AA)
+            cv2.putText(imgOut, text, (int(x_p1), int(y_p1+20)), font, fontScale, (0,0,255), thickness)
 
         # Publish visualization image
         image_msg = self.bridge.cv2_to_imgmsg(imgOut, "rgb8")

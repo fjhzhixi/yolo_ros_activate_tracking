@@ -1,0 +1,4 @@
+sensor_msgs/Image depth_image
+yolov3_pytorch_ros/BoundingBox box
+---
+int64 ret
